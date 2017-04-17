@@ -4,6 +4,6 @@ RUN mkdir -p /usr/MtaProtoBuf
 WORKDIR /usr/MtaProtoBuf/
 COPY . /usr/MtaProtoBuf/
 
-RUN swift build 
+RUN swift build -c release
 
-CMD ["/usr/MtaProtoBuf/.build/debug/MtaProtoBuf", "KEY_HERE"]
+CMD ["/usr/MtaProtoBuf/.build/release/MtaProtoBuf", "mta key here"]

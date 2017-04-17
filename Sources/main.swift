@@ -2,14 +2,6 @@ import Dispatch
 import Foundation
 import ProtocolBuffers
 
-print("Hello, world!")
-extension Array {
-    subscript (safe index: Int) -> Element? {
-        return index >= 0 && index < self.count
-            ? self[index]
-            : nil
-    }
-}
 
 
 class Mainer {
@@ -36,8 +28,7 @@ class Mainer {
               for entity in feed.entity { //entities in the feed that are not the header
                 print("*", entity.tripUpdate)
               }
-//              let feedMessage = try TransitRealtime.FeedMessage.fromJSON(data:data)
-//              print(feedMessage)
+
             } catch {
               print(error)
             }
