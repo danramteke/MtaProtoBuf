@@ -1,5 +1,6 @@
 import Dispatch
 import Foundation
+import ProtocolBuffers
 
 print("Hello, world!")
 extension Array {
@@ -24,8 +25,21 @@ class Mainer {
           print(error.localizedDescription)
         } else if let httpResponse = response as? HTTPURLResponse, let data = data {
           if httpResponse.statusCode == 200 {
-            print("got a 200")
-            print(String(data: data, encoding: String.Encoding.utf8) ?? "couldnt make string from HTTP response")
+            print("**got a 200**")
+            for (key, value) in httpResponse.allHeaderFields {
+              print("*\(key): \(value)")
+            }
+            do {
+              let stream = CodedInputStream(data: data)
+              let builder = try TransitRealtime.FeedMessage.Builder().mergeFrom(codedInputStream: stream)
+              let obj = try builder.build()
+              print(obj)
+//              let feedMessage = try TransitRealtime.FeedMessage.fromJSON(data:data)
+//              print(feedMessage)
+            } catch {
+              print(error)
+            }
+            
             self.semaphore.leave()
           }
         }
