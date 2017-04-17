@@ -2,14 +2,21 @@ import Dispatch
 import Foundation
 
 print("Hello, world!")
+extension Array {
+    subscript (safe index: Int) -> Element? {
+        return index >= 0 && index < self.count
+            ? self[index]
+            : nil
+    }
+}
 
 
 class Mainer {
   let semaphore = DispatchGroup()
   
-  func go() {
+  func go(mtaKey: String) {
     DispatchQueue.global().async { 
-      let url = URL(string: "https://itunes.apple.com/search?media=music&entity=song&term=lamar")!
+      let url = URL(string: "http://datamine.mta.info/mta_esi.php?key=\(mtaKey)&feed_id=1")!
       let defaultSession = URLSession(configuration: URLSessionConfiguration.default)
       let dataTask = defaultSession.dataTask(with: url) { data, response, error in
 
@@ -31,8 +38,16 @@ class Mainer {
   }
 }
 
+print(CommandLine.arguments)
 
-let mainer = Mainer()
-mainer.go()
+
+if CommandLine.arguments.count == 2 {
+  let mtaKey = CommandLine.arguments[1]
+  let mainer = Mainer()
+  mainer.go(mtaKey: mtaKey)
+
+} else {
+  print("usage:\nfirst arg is the mta key")
+} 
 
 

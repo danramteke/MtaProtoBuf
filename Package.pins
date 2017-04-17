@@ -1,0 +1,12 @@
+{
+  "autoPin": true,
+  "pins": [
+    {
+      "package": "ProtocolBuffers",
+      "reason": null,
+      "repositoryURL": "https://github.com/alexeyxo/protobuf-swift.git",
+      "version": "3.0.13"
+    }
+  ],
+  "version": 1
+}
