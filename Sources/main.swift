@@ -32,8 +32,10 @@ class Mainer {
             do {
               let stream = CodedInputStream(data: data)
               let builder = try TransitRealtime.FeedMessage.Builder().mergeFrom(codedInputStream: stream)
-              let obj = try builder.build()
-              print(obj)
+              let feed = try builder.build() //whole feed
+              for entity in feed.entity { //entities in the feed that are not the header
+                print("*", entity.tripUpdate)
+              }
 //              let feedMessage = try TransitRealtime.FeedMessage.fromJSON(data:data)
 //              print(feedMessage)
             } catch {
