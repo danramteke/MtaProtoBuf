@@ -11,7 +11,7 @@ Problems
 
 1. Although debug mode compiles and runs fine, when I build for release in the Dockerfile `swift build -c release`, I get an error. Here is the error:
 
-
+```
     Compile Swift Module 'ProtocolBuffers' (23 sources)
     swift: /home/buildnode/disk2/workspace/oss-swift-3.1-package-linux-ubuntu-16_04/swift/lib/SILOptimizer/SILCombiner/SILCombine.cpp:292: swift::SILInstruction *swift::SILCombiner::eraseInstFromFunction(swift::SILInstruction &, SILBasicBlock::iterator &, bool): Assertion `onlyHaveDebugUses(&I) && "Cannot erase instruction that is used!"' failed.
     0  swift           0x000000000362f718
@@ -42,7 +42,7 @@ Problems
     <unknown>:0: error: build had 1 command failures
     swift-build: error: exit(1): /usr/bin/swift-build-tool -f /usr/MtaProtoBuf/.build/release.yaml
     The command '/bin/sh -c swift build -c release' returned a non-zero code: 1
-    
+```    
 
 Any ideas on how to fix?
 
