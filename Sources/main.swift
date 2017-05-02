@@ -1,6 +1,6 @@
 import Dispatch
 import Foundation
-import ProtocolBuffers
+import SwiftProtobuf
 
 
 
@@ -22,9 +22,14 @@ class Mainer {
               print("*\(key): \(value)")
             }
             do {
-              let stream = CodedInputStream(data: data)
-              let builder = try TransitRealtime.FeedMessage.Builder().mergeFrom(codedInputStream: stream)
-              let feed = try builder.build() //whole feed
+            
+              let feed = try TransitRealtime_FeedMessage(serializedData: data)
+              //let stream = CodedInputStream(data: data)
+              //let builder = try TransitRealtime.FeedMessage.Builder().mergeFrom(codedInputStream: stream)
+              //let feed = try builder.build() //whole feed
+              
+              
+              
               for entity in feed.entity { //entities in the feed that are not the header
                 print("*", entity.tripUpdate)
               }

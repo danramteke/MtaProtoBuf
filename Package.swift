@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "MtaProtoBuf",
     dependencies: [
-        .Package(url: "https://github.com/alexeyxo/protobuf-swift.git", Version(3,0,13)),
+        .Package(url: "https://github.com/apple/swift-protobuf.git", Version(0,9,901)),
         
     ]
 )

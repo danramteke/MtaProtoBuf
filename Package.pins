@@ -2,10 +2,10 @@
   "autoPin": true,
   "pins": [
     {
-      "package": "ProtocolBuffers",
+      "package": "SwiftProtobuf",
       "reason": null,
-      "repositoryURL": "https://github.com/alexeyxo/protobuf-swift.git",
-      "version": "3.0.13"
+      "repositoryURL": "https://github.com/apple/swift-protobuf.git",
+      "version": "0.9.901"
     }
   ],
   "version": 1
